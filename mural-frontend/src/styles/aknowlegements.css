@@ -1,0 +1,35 @@
+.containerTitle {
+    background-color: #dbcbc0;
+    padding: 22px;
+    display: flex;
+    text-align: center;
+    font-family: fantasy;
+    display: grid;
+    font-size: 40px;
+    justify-content: center;
+    align-content: center;
+}
+
+.container-aknowledge {
+    align-items: center;
+    text-align: center;
+    padding-left: 25%;
+    padding-right: 25%;
+}
+
+.two-column-container {
+    display: flex;
+}
+
+.left-column,
+.right-column {
+    flex: 1; /* Equal width for both columns */
+}
+
+.left-column {
+    /* Styles for the left column */
+}
+
+.right-column {
+    /* Styles for the right column */
+}
