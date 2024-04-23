@@ -1,0 +1,49 @@
+.forum-form {
+    align-content: center;
+}
+button {
+    float: right;
+}
+
+.container-form {
+    padding-left: 20%;
+    padding-right: 20%;
+}
+
+.containerTitle {
+    background-color: #dbcbc0;
+    padding: 22px;
+    display: flex;
+    text-align: center;
+    font-family: fantasy;
+    display: grid;
+    font-size: 40px;
+    justify-content: center;
+    align-content: center;
+}
+
+.two-column-container {
+    display: flex;
+}
+
+.left-column,
+.right-column {
+    flex: 1; /* Equal width for both columns */
+}
+
+.left-column {
+    /* Styles for the left column */
+}
+
+.right-column {
+    /* Styles for the right column */
+}
+
+body {
+    font-size: large;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}

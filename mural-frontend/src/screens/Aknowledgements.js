@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/aknowlegements.css';
-import logo from '../assets/mural.jpeg';
+import hand from '../assets/Manos.PNG';
 
 const Aknowledgements = () => {
     useEffect(() => {}, []);
@@ -83,6 +83,9 @@ const Aknowledgements = () => {
                     inclusivo y equitativo en nuestra comunidad universitaria.
                     ¡Gracias por creer en nosotros y en nuestra visión!
                 </p>
+            </div>
+            <div>
+                <img src={hand} alt='mural tejiendo identidades' width={400} />
             </div>
         </div>
     );

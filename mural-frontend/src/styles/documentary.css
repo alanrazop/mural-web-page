@@ -29,13 +29,13 @@
     /* Styles for the right column */
 }
 
-body {
-    font-size: large;
-}
-
-img {
+.img-woman1 {
     width: 100%;
     height: auto;
+}
+
+body {
+    font-size: large;
 }
 
 .introText {

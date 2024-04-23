@@ -8,6 +8,8 @@ import Documentary from './screens/Documentary';
 import Forum from './screens/Forum';
 import Gallery from './screens/Gallery';
 import Aknowledgements from './screens/Aknowledgements';
+import EditPost from './screens/EditPost';
+import ForumForm from './screens/ForumForm';
 
 const routes = [
     {
@@ -77,6 +79,20 @@ const routes = [
         path: '/cambiarContrasena',
         name: 'Cambiar contraseña',
         Component: ForgotPassword,
+        isPrivate: false,
+        inNavbar: false,
+    },
+    {
+        path: '/posts/:id',
+        name: 'Editar publicación',
+        Component: EditPost,
+        isPrivate: false,
+        inNavbar: false,
+    },
+    {
+        path: '/posts/new',
+        name: 'Nueva publicación',
+        Component: ForumForm,
         isPrivate: false,
         inNavbar: false,
     },

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/documentary.css';
-import logo from '../assets/mural.jpeg';
+import woman from '../assets/mujer_1.PNG';
 
 const Documentary = () => {
     useEffect(() => {}, []);
@@ -12,12 +12,12 @@ const Documentary = () => {
             </div>
             <div className='two-column-container'>
                 <div className='left-column'>
-                    <h2>
+                    <h3>
                         ¡Bienvenidos a esta sección dedicada al mini documental
                         que muestra el apasionante recorrido y proceso de
                         creación del mural "Tejiendo Identidades, Celebrando
                         nuestra Interseccionalidad"!
-                    </h2>
+                    </h3>
                     <p>
                         Este documental es un viaje emocionante que nos lleva
                         desde la chispa inicial de inspiración hasta la
@@ -34,12 +34,18 @@ const Documentary = () => {
                         creatividad, la colaboración y el compromiso de todos
                         los que participaron en este proyecto.
                     </p>
-                    <h3>
+                    <p>
                         Esperamos que les inspire tanto como nos ha inspirado a
-                        nosotros. ¡Disfruten del recorrido!
-                    </h3>
+                        nosotros. <h3>¡Disfruten del recorrido!</h3>
+                    </p>
                 </div>
-                <div className='right-column'>hola</div>
+                <div className='right-column'>
+                    <img
+                        className='img-woman1'
+                        src={woman}
+                        alt='Mujer mirando hacia abajo'
+                    />
+                </div>
             </div>
         </div>
     );

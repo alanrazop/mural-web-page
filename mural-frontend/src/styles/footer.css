@@ -1,5 +1,5 @@
 .footer {
-    background-color: #333;
+    background-color: #5e377f;
     color: #fff;
     padding: 20px;
 }
@@ -7,6 +7,7 @@
 .footer-content {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .footer-column {
@@ -15,4 +16,16 @@
 
 .sub-column {
     margin-top: 10px;
+    padding-left: 10pt;
+    float: right;
+}
+
+.logo-footer {
+    width: 130px;
+    height: auto;
+}
+
+.logo-socials {
+    width: 70px;
+    height: auto;
 }

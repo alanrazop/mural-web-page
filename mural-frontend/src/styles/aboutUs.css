@@ -27,6 +27,11 @@
     /* Styles for the right column */
 }
 
+.img-jaguar {
+    width: 80%;
+    height: auto;
+}
+
 body {
     font-size: large;
 }

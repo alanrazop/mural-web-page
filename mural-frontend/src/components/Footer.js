@@ -1,5 +1,10 @@
 import React from 'react';
 import '../styles/footer.css'; // Import the CSS file for styling
+import logo from '../assets/logo_gw.png';
+import ig from '../assets/instagram.png';
+import fb from '../assets/facebook.png';
+import tw from '../assets/twitter.png';
+import { Link } from 'react-router-dom';
 
 function Footer() {
     return (
@@ -7,19 +12,41 @@ function Footer() {
             <div className='footer-content'>
                 {/* First column */}
                 <div className='footer-column'>
-                    <p>Gender watch</p>
+                    <img
+                        className='logo-footer'
+                        src={logo}
+                        alt='mural tejiendo identidades'
+                    />
                 </div>
                 {/* Second column */}
                 <div className='footer-column'>
                     {/* Sub-columns within the second column */}
                     <div className='sub-column'>
-                        <p>Sub Column 1 Content</p>
+                        <a href='https://www.instagram.com/gender.watcher/'>
+                            <img
+                                className='logo-socials'
+                                src={ig}
+                                alt='instagram'
+                            />
+                        </a>
                     </div>
                     <div className='sub-column'>
-                        <p>Sub Column 2 Content</p>
+                        <a href='https://www.facebook.com/GenderWatch.SEG'>
+                            <img
+                                className='logo-socials'
+                                src={fb}
+                                alt='facebook'
+                            />
+                        </a>
                     </div>
                     <div className='sub-column'>
-                        <p>Sub Column 3 Content</p>
+                        <a href='https://twitter.com/gender_watcher'>
+                            <img
+                                className='logo-socials'
+                                src={tw}
+                                alt='twitter'
+                            />
+                        </a>
                     </div>
                 </div>
             </div>

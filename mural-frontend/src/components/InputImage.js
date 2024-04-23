@@ -16,7 +16,7 @@ function Input(props) {
         <>
             <label>
                 <div className='label-text'>{label}</div>
-                <input className='input-general' type='file' onChange={onSelectFile} />
+                <input className='' type='file' onChange={onSelectFile} />
                 <p>{getVal && `${getVal.name} - ${getVal.type}`}</p>
             </label>
         </>

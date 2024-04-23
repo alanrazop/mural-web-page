@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/aboutUs.css';
+import jaguar from '../assets/Jaguar.PNG';
 
 const AboutUs = () => {
     useEffect(() => {}, []);
@@ -11,7 +12,7 @@ const AboutUs = () => {
             </div>
             <div className='two-column-container'>
                 <div className='left-column'>
-                    <p>Hola</p>
+                    <img className='img-jaguar' src={jaguar} alt='jaguar' />
                 </div>
                 <div className='right-column'>
                     <p>

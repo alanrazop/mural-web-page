@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/aboutProject.css';
-import logo from '../assets/mural.jpeg';
+import woman from '../assets/mujer_fuego.PNG';
 
 const AboutProject = () => {
     useEffect(() => {}, []);
@@ -49,10 +49,16 @@ const AboutProject = () => {
                         todas.
                     </p>
                 </div>
-                <div className='right-column'>hola</div>
+                <div className='right-column'>
+                    <img
+                        className='img-woman'
+                        src={woman}
+                        alt='mujer de fuego'
+                    />
+                </div>
             </div>
             <div>
-                <h2>Línea del tiempo</h2>
+                <h2 className='containerTitle2'>Línea del tiempo</h2>
                 <div dangerouslySetInnerHTML={{ __html: body }} />
             </div>
         </div>
