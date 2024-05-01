@@ -1,13 +1,22 @@
 import React from 'react';
 import '../styles/forumCard.css';
 import Button from './Button';
+import logo from '../assets/logo_gw_forum.png';
+import { Edit, Trash2 } from 'react-feather';
 
-const ForumCard = ({ id, title, description, editPost, deletePost }) => {
+const ForumCard = ({
+    id,
+    title,
+    description,
+    editPost,
+    deletePost,
+    seeMore,
+}) => {
     return (
         <div>
             <article>
                 <div class='article-image-container'>
-                    <img src='https://img.freepik.com/free-vector/newspaper-concept-illustration_114360-22666.jpg?w=826' />
+                    <img src={logo} alt='logo gender watch' />
                 </div>
                 <div class='content-container'>
                     <h3 class='article-title'>{title}</h3>
@@ -15,13 +24,18 @@ const ForumCard = ({ id, title, description, editPost, deletePost }) => {
                     <div className='button-container'>
                         <Button
                             type='modify'
-                            text={'Editar'}
+                            icon={<Edit size={15} />}
                             action={editPost}
                         />
                         <Button
                             type='delete'
-                            text={'Eliminar'}
+                            icon={<Trash2 size={15} />}
                             action={(e) => deletePost(id)}
+                        />
+                        <Button
+                            type='action'
+                            text={'Ver mas...'}
+                            action={seeMore}
                         />
                     </div>
                 </div>

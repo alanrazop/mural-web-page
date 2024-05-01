@@ -47,3 +47,8 @@ img {
     width: 100%;
     height: auto;
 }
+
+.container-post {
+    height: 100%;
+    width: auto;
+}

@@ -1,10 +1,21 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import logo from '../assets/Jaguar.PNG';
+import { getAllImages } from '../client/image';
 
-function Responsive() {
+const Responsive = () => {
+    const [getImage, setImage] = useState([]);
+
+    useEffect(() => {
+        (async () => {
+            const image = await getAllImages();
+
+            setImage(image);
+        })();
+    }, []);
+
     var settings = {
         dots: true,
         infinite: false,
@@ -42,33 +53,20 @@ function Responsive() {
     return (
         <div className='slider-container'>
             <Slider {...settings}>
-                <div>
-                    <img src={logo} />
-                </div>
-                <div>
-                    <h3>2</h3>
-                </div>
-                <div>
-                    <h3>3</h3>
-                </div>
-                <div>
-                    <h3>4</h3>
-                </div>
-                <div>
-                    <h3>5</h3>
-                </div>
-                <div>
-                    <h3>6</h3>
-                </div>
-                <div>
-                    <h3>7</h3>
-                </div>
-                <div>
-                    <h3>8</h3>
-                </div>
+                {getImage.map((el) => (
+                    <div>
+                        <img
+                            src={el.imageUrl}
+                            alt={el.title}
+                            width={50}
+                            height={100}
+                        />
+                        <p>{el.title}</p>
+                    </div>
+                ))}
             </Slider>
         </div>
     );
-}
+};
 
 export default Responsive;

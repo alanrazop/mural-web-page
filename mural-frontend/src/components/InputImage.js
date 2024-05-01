@@ -1,15 +1,13 @@
 import React from 'react';
 import '../styles/input.css';
 
-function Input(props) {
-    const { label, getVal, setVal } = props;
-
+const FileInput = ({ label, setVal, accept = '.pdf' }) => {
     const onSelectFile = (e) => {
         if (!e.target.files || e.target.files.length === 0) {
             setVal(undefined);
-            return;
+        } else {
+            setVal(e.target.files[0]);
         }
-        setVal(e.target.files[0]);
     };
 
     return (
@@ -17,10 +15,9 @@ function Input(props) {
             <label>
                 <div className='label-text'>{label}</div>
                 <input className='' type='file' onChange={onSelectFile} />
-                <p>{getVal && `${getVal.name} - ${getVal.type}`}</p>
             </label>
         </>
     );
-}
+};
 
-export default Input;
+export default FileInput;

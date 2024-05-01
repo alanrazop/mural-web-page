@@ -32,6 +32,22 @@ export function FireSucess(message) {
 }
 
 /**
+ * It's a function that takes a message as a parameter and displays a loading message using the
+ * SweetAlert2 library.
+ * @param message - The message you want to display.
+ */
+export function FireLoading(message) {
+    return MySwal.fire({
+        title: message,
+        icon: 'info',
+        showConfirmButton: false,
+        onBeforeOpen: () => {
+            Swal.showLoading();
+        },
+    });
+}
+
+/**
  * It's a function that returns a promise that resolves to a boolean value
  * @param question - The question you want to ask the user.
  * @param warning - The text that will be displayed in the body of the modal.

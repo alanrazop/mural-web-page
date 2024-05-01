@@ -5,6 +5,8 @@ import { postLogin } from '../client/authentication';
 import { setToken, setAdminUserSaved, isAuthenticated } from '../utils/auth';
 import axios from 'axios';
 import '../styles/auth.css';
+import Input from '../components/Input';
+import Button from '../components/Button';
 
 const LoginForm = () => {
     const [email, setEmail] = useState('');
@@ -25,7 +27,8 @@ const LoginForm = () => {
                 navigate('/');
             }
         } catch (error) {
-            if (error.response.status === 401) FireError(error.response.data.message);
+            if (error.response.status === 401)
+                FireError(error.response.data.message);
             else FireError('Ocurrió un error. Por favor intenta de nuevo.');
         }
     };
@@ -34,29 +37,35 @@ const LoginForm = () => {
 
     return (
         <div className='auth-container'>
-            <h1>Iniciar Sesión</h1>
-            <form onSubmit={handleSubmit}>
+            <h2>Iniciar Sesión</h2>
+            <form>
                 <div>
-                    <label htmlFor='email'>Email</label>
                     <input
                         type='email'
                         id='email'
+                        label='Email'
                         required
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                     />
                 </div>
+                <br></br>
                 <div>
-                    <label htmlFor='password'>Contraseña</label>
                     <input
                         type='password'
                         id='password'
+                        label='Contraseña'
                         required
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                     />
                 </div>
-                <button type='submit'>Entrar</button>
+                <br></br>
+                <Button
+                    type='action'
+                    text='Iniciar sesión'
+                    action={handleSubmit}
+                />
             </form>
             <section>
                 <Link to='/signup'>Registrarse</Link>

@@ -50,6 +50,7 @@ function Footer() {
                     </div>
                 </div>
             </div>
+            <p> © 2024 Gender Watch | Alan Software</p>
         </footer>
     );
 }

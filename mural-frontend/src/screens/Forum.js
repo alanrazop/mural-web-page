@@ -89,6 +89,7 @@ const Forum = () => {
                         description={post.content}
                         deletePost={handleDeletePost}
                         editPost={() => navigate(`/posts/${post._id}`)}
+                        seeMore={() => navigate(`/posts/view/${post._id}`)}
                     />
                 ))}
             </div>

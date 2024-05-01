@@ -1,5 +1,5 @@
 .containerTitle {
-    background-color: hsl(24, 27%, 81%);
+    background-color: #dbcbc0;
     padding: 22px;
     display: flex;
     text-align: center;
@@ -74,4 +74,13 @@ img {
 .int_zona {
     position: absolute;
     margin-top: -40px;
+}
+
+.slick-prev {
+    left: 3% !important;
+    z-index: 1;
+}
+.slick-next {
+    right: 3% !important;
+    z-index: 1;
 }

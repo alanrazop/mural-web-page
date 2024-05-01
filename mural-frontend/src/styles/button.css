@@ -25,6 +25,9 @@
 .button-modify {
     background-color: #156dd2;
 }
+.button-action {
+    background-color: #5e377f;
+}
 .button-pagination {
     background-color: #229cac;
     color: white;
@@ -37,4 +40,4 @@
 
 .button-pagination:hover {
     background-color: #2bbfd2;
-  }
+}

@@ -2,7 +2,7 @@ import React from 'react';
 import '../styles/button.css';
 
 function Button(props) {
-    const { action, text, type } = props;
+    const { action, text, type, icon } = props;
 
     return (
         <button
@@ -10,7 +10,9 @@ function Button(props) {
                 e.preventDefault();
                 action(e);
             }}
-            className={`button button-${type}`}>
+            className={`button button-${type}`}
+        >
+            {icon && <span className='button-icon'>{icon}</span>}
             {text}
         </button>
     );

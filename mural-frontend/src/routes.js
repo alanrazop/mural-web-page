@@ -10,6 +10,7 @@ import Gallery from './screens/Gallery';
 import Aknowledgements from './screens/Aknowledgements';
 import EditPost from './screens/EditPost';
 import ForumForm from './screens/ForumForm';
+import ViewPost from './screens/ViewPost';
 
 const routes = [
     {
@@ -93,6 +94,13 @@ const routes = [
         path: '/posts/new',
         name: 'Nueva publicación',
         Component: ForumForm,
+        isPrivate: false,
+        inNavbar: false,
+    },
+    {
+        path: '/posts/view/:id',
+        name: 'Nueva publicación',
+        Component: ViewPost,
         isPrivate: false,
         inNavbar: false,
     },

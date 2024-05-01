@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FireQuestion } from '../utils/alertHandler';
-import { LogOut } from 'react-feather';
+import { LogOut, Key } from 'react-feather';
 import { logOut } from '../utils/auth';
 import routes from '../routes';
 import '../styles/navbar.css';
@@ -39,6 +39,10 @@ function Navbar() {
                 <a onClick={logOutHandler}>
                     <span>Cerrar sesión</span>
                     <LogOut color='white' />
+                </a>
+                <a onClick={() => navigate('/login')}>
+                    <span>Iniciar sesión</span>
+                    <Key color='white' />
                 </a>
             </div>
         </div>
