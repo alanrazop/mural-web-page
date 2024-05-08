@@ -42,13 +42,13 @@ exports.createPost = async (req, res) => {
         res.status(201).json({
             status: 'success',
             data: {
-                user: newPost,
+                post: newPost,
             },
         });
     } catch (err) {
         res.status(400).json({
             status: 'fail',
-            message: 'Invalid ID',
+            message: err.message,
         });
     }
 };

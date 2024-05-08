@@ -10,11 +10,33 @@
     "author": "Alan Razo",
     "license": "ISC",
     "dependencies": {
+        "@google-cloud/storage": "^7.10.2",
+        "bcryptjs": "^2.4.3",
+        "body-parser": "^1.20.2",
+        "cors": "^2.8.5",
         "dotenv": "^16.4.5",
         "express": "^4.19.2",
+        "express-mongo-sanitize": "^2.2.0",
+        "express-rate-limit": "^7.2.0",
+        "firebase": "^10.11.1",
+        "firebase-admin": "^12.1.0",
+        "firebase-functions": "^4.2.0",
+        "firebase-tools": "^13.8.0",
+        "helmet": "^7.1.0",
+        "hpp": "^0.2.3",
+        "jsonwebtoken": "^9.0.2",
         "mongoose": "^8.2.4",
         "morgan": "^1.10.0",
+        "multer": "^1.4.5-lts.1",
+        "nodemailer": "^6.9.13",
         "nodemon": "^3.1.0",
-        "validator": "^13.11.0"
+        "sharp": "^0.33.3",
+        "validator": "^13.11.0",
+        "xhr2": "^0.2.1",
+        "xss-clean": "^0.1.4"
+    },
+    "devDependencies": {
+        "@types/busboy": "^1.5.3",
+        "@types/content-type": "^1.1.8"
     }
 }
