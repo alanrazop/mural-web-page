@@ -1,7 +1,7 @@
 .auth-container {
     margin: auto;
     width: 30rem;
-    padding: 2rem;
+    padding: 5rem;
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
@@ -23,7 +23,7 @@ h1 {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    height: 75px;
+    height: 80px;
 }
 
 .auth-container section a {
@@ -32,11 +32,6 @@ h1 {
 
 .auth-container form {
     color: #999;
-}
-
-.auth-container form input:focus {
-    outline: none;
-    box-shadow: 0px 0px 3px #cf2a2a;
 }
 
 .auth-container form button[type='submit'] {

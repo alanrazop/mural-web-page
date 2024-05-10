@@ -40,24 +40,24 @@ const LoginForm = () => {
             <h2>Iniciar Sesión</h2>
             <form>
                 <div>
-                    <input
+                    <Input
                         type='email'
                         id='email'
-                        label='Email'
+                        label='Correo electrónico'
                         required
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        getVal={email}
+                        setVal={setEmail}
                     />
                 </div>
                 <br></br>
                 <div>
-                    <input
+                    <Input
                         type='password'
                         id='password'
                         label='Contraseña'
                         required
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
+                        getVal={password}
+                        setVal={setPassword}
                     />
                 </div>
                 <br></br>
@@ -67,10 +67,10 @@ const LoginForm = () => {
                     action={handleSubmit}
                 />
             </form>
-            <section>
+            {/* <section>
                 <Link to='/signup'>Registrarse</Link>
                 <Link to='/cambiarContrasena'>Olvidé mi contraseña</Link>
-            </section>
+            </section> */}
         </div>
     );
 };

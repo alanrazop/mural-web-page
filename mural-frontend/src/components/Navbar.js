@@ -5,6 +5,7 @@ import { LogOut, Key } from 'react-feather';
 import { logOut } from '../utils/auth';
 import routes from '../routes';
 import '../styles/navbar.css';
+import { isAuthenticated } from '../utils/auth';
 
 function Navbar() {
     const navigate = useNavigate();
@@ -36,10 +37,12 @@ function Navbar() {
                     ))}
             </div>
             <div className='navbar-logout'>
-                <a onClick={logOutHandler}>
-                    <span>Cerrar sesión</span>
-                    <LogOut color='white' />
-                </a>
+                {isAuthenticated() && (
+                    <a onClick={logOutHandler}>
+                        <span>Cerrar sesión</span>
+                        <LogOut color='white' />
+                    </a>
+                )}
                 <a onClick={() => navigate('/login')}>
                     <span>Iniciar sesión</span>
                     <Key color='white' />

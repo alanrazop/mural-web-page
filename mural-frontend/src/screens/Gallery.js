@@ -11,6 +11,7 @@ import {
 } from '../utils/alertHandler';
 import { createImage } from '../client/image';
 import Input from '../components/Input';
+import { isAuthenticated } from '../utils/auth';
 
 const Gallery = () => {
     const [image, setImage] = useState(null);
@@ -50,34 +51,36 @@ const Gallery = () => {
                 <b>Galería</b>
             </div>
             <div className='container'>
-                <div className='logoFundacion'>
-                    <form>
-                        <Input
-                            type='text'
-                            id='title'
-                            label='Escribe un título'
-                            getVal={title}
-                            setVal={setTitle}
-                            required
-                        />
-                        <br></br>
-                        <InputImage
-                            type='file'
-                            label='Sube una imagen'
-                            id='image'
-                            accept='image/*'
-                            setVal={setImage}
-                            required
-                        />
+                {isAuthenticated() && (
+                    <div>
+                        <form>
+                            <Input
+                                type='text'
+                                id='title'
+                                label='Escribe un título'
+                                getVal={title}
+                                setVal={setTitle}
+                                required
+                            />
+                            <br></br>
+                            <InputImage
+                                type='file'
+                                label='Sube una imagen'
+                                id='image'
+                                accept='image/*'
+                                setVal={setImage}
+                                required
+                            />
 
-                        <Button
-                            text='Publicar imagen'
-                            type='create'
-                            action={onSubmit}
-                        />
-                        <br></br>
-                    </form>
-                </div>
+                            <Button
+                                text='Publicar imagen'
+                                type='create'
+                                action={onSubmit}
+                            />
+                            <br></br>
+                        </form>
+                    </div>
+                )}
             </div>
             <br></br>
             <Carousel />

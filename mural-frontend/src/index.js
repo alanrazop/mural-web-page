@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import PrivateRoute from './components/PrivateRoute';
@@ -44,10 +44,10 @@ function App() {
         </div>
     );
 }
-
-ReactDOM.render(
+const container = document.getElementById('root');
+const root = createRoot(container);
+root.render(
     <BrowserRouter>
         <App />
-    </BrowserRouter>,
-    document.getElementById('root')
+    </BrowserRouter>
 );

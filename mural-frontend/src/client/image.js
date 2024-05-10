@@ -18,22 +18,9 @@ export async function createImage(data) {
     return response.data.data.image;
 }
 
-export async function deletePost(id) {
-    let endpoint = `${baseEndpoint}/api/v1/posts/${id}`;
+export async function deleteImage(id) {
+    let endpoint = `${baseEndpoint}/api/v1/images/${id}`;
 
     const response = await axios.delete(endpoint);
     return response;
-}
-
-export async function getPost(id) {
-    let endpoint = `${baseEndpoint}/api/v1/posts/${id}`;
-
-    const response = await axios.get(endpoint);
-    return response.data.data.post;
-}
-
-export async function updatePost(id, data) {
-    let endpoint = `${baseEndpoint}/api/v1/posts/${id}`;
-    const response = await axios.patch(endpoint, data);
-    return response.data.data.post;
 }

@@ -2,11 +2,34 @@ import React, { useEffect, useState } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import logo from '../assets/Jaguar.PNG';
 import { getAllImages } from '../client/image';
+import Button from './Button';
+import { FireQuestion, FireError, FireSucess } from '../utils/alertHandler';
+import { useNavigate } from 'react-router-dom';
+import { deleteImage } from '../client/image';
+import { Trash, Trash2 } from 'react-feather';
+import { isAuthenticated } from '../utils/auth';
 
 const Responsive = () => {
     const [getImage, setImage] = useState([]);
+    const navigate = useNavigate();
+
+    const handleDelete = async (id) => {
+        try {
+            const confirmation = await FireQuestion(
+                '¿Desea eliminar la imagen?',
+                'Esta acción no se puede deshacer.'
+            );
+
+            if (!confirmation.isConfirmed) return;
+            await deleteImage(id);
+
+            FireSucess('Imagen eliminada exitosamente');
+            navigate('/gallery');
+        } catch (error) {
+            FireError(error);
+        }
+    };
 
     useEffect(() => {
         (async () => {
@@ -53,15 +76,17 @@ const Responsive = () => {
     return (
         <div className='slider-container'>
             <Slider {...settings}>
-                {getImage.map((el) => (
-                    <div>
-                        <img
-                            src={el.imageUrl}
-                            alt={el.title}
-                            width={50}
-                            height={100}
-                        />
-                        <p>{el.title}</p>
+                {getImage.map((el, i) => (
+                    <div key={i}>
+                        <img src={el.imageUrl} alt={el.title} />
+                        <h5>{el.title}</h5>
+                        {isAuthenticated() && (
+                            <Button
+                                type='delete'
+                                action={(e) => handleDelete(el._id)}
+                                icon={<Trash2 size={15} />}
+                            />
+                        )}
                     </div>
                 ))}
             </Slider>

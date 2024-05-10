@@ -63,13 +63,12 @@ const ForumForm = () => {
                     setVal={(value) => onInputChange('content', value)}
                 />
                 <br></br>
-                <InputImage label={'Sube una imagen (Opcional)'} />
-                <br></br>
                 <Button
                     type='create'
                     action={onSubmit}
                     text={'Crear publicación'}
                 />
+                <br></br>
                 <br></br>
             </form>
         </div>
