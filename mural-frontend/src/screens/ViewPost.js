@@ -1,11 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getPost } from '../client/forum';
 import '../styles/viewPost.css';
-import Input from '../components/Input';
-import InputImage from '../components/InputImage';
-import Button from '../components/Button';
-import TextArea from '../components/TextArea';
-import { FireError, FireSucess, FireQuestion } from '../utils/alertHandler';
 import { useNavigate, useParams } from 'react-router-dom';
 
 const ForumForm = () => {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import '../styles/aknowlegements.css';
 import hand from '../assets/Manos.PNG';
 

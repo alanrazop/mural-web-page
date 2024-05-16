@@ -43,10 +43,10 @@ function Navbar() {
                         <LogOut color='white' />
                     </a>
                 )}
-                <a onClick={() => navigate('/login')}>
+                {/* <a onClick={() => navigate('/login')}>
                     <span>Iniciar sesión</span>
                     <Key color='white' />
-                </a>
+                </a> */}
             </div>
         </div>
     );

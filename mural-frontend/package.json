@@ -27,10 +27,15 @@
         "web-vitals": "^3.5.2"
     },
     "scripts": {
+        "update-env": "node ./utils/updateEnv.js",
         "start": "react-scripts start",
+        "start:dev": "npm run update-env development && react-scripts start",
+        "start:prod": "npm run update-env production && react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test",
-        "eject": "react-scripts eject"
+        "eject": "react-scripts eject",
+        "deploy-test": "npm run update-env testing && npm run build && firebase deploy --only hosting:test",
+        "deploy-prod": "npm run update-env production && npm run build && firebase deploy --only hosting:prod"
     },
     "eslintConfig": {
         "extends": [

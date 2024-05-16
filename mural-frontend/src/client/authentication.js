@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseApiEndpoint = 'http://localhost:5000';
+import baseApiEndpoint from './backendConfig';
 
 /**
  * Sends a POST request to the '/admin/auth/login' endpoint with the provided email and password as the request body.

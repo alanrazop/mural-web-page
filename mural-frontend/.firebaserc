@@ -1,5 +1,16 @@
 {
   "projects": {
     "default": "tejiendo-identidades"
-  }
+  },
+  "targets": {
+    "tejiendo-identidades": {
+      "hosting": {
+        "prod": [
+          "tejiendo-identidades"
+        ]
+      }
+    }
+  },
+  "etags": {},
+  "dataconnectEmulatorConfig": {}
 }
