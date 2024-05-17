@@ -18,7 +18,7 @@ router
     .patch(postController.updatePost)
     .delete(
         protect,
-        restrictTo('admin', 'lead-guide'),
+        restrictTo('user', 'lead-guide'),
         postController.deletePost
     );
 
