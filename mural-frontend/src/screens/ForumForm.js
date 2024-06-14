@@ -13,6 +13,7 @@ const ForumForm = () => {
     const [data, setData] = useState({
         title: '',
         content: '',
+        user: '',
     });
 
     const onSubmit = async (e) => {
@@ -55,6 +56,11 @@ const ForumForm = () => {
                     setVal={(value) => onInputChange('title', value)}
                 />
                 <br></br>
+                <Input
+                    label='Escrito por'
+                    getVal={data.user}
+                    setVal={(value) => onInputChange('user', value)}
+                />
 
                 <br></br>
                 <TextArea

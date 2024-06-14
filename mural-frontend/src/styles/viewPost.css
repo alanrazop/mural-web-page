@@ -21,3 +21,13 @@
     font-size: 16px;
     line-height: 1.6;
 }
+
+.post-comment {
+    padding: var(--padding-md);
+    border: var(--bw-2) solid var(--c-bd-3);
+    border-bottom-color: #666;
+    border-radius: var(--border-radius);
+}
+.post-comment-row {
+    flex-direction: row;
+}

@@ -1,4 +1,4 @@
-// ForumForm.js
+// EditForm.js
 import React, { useState, useEffect } from 'react';
 import { getPost, updatePost } from '../client/forum';
 import '../styles/forumForm.css';
@@ -9,7 +9,7 @@ import TextArea from '../components/TextArea';
 import { FireError, FireSucess, FireQuestion } from '../utils/alertHandler';
 import { useNavigate, useParams } from 'react-router-dom';
 
-const ForumForm = () => {
+const EditForm = () => {
     const searchParams = useParams();
     const navigate = useNavigate();
     const [data, setData] = useState({
@@ -88,4 +88,4 @@ const ForumForm = () => {
     );
 };
 
-export default ForumForm;
+export default EditForm;

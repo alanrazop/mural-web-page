@@ -1,19 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, lazy, Suspense } from 'react';
 import '../styles/forumForm.css';
-import ForumCard from '../components/ForumCard';
+//import ForumCard from '../components/ForumCard';
 import { getPosts } from '../client/forum';
 import Input from '../components/Input';
 import { deletePost } from '../client/forum';
 import { FireError, FireSucess, FireQuestion } from '../utils/alertHandler';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Button from '../components/Button';
+import Loading from './Loading';
 
 const Forum = () => {
-    const searchParams = useParams();
     const navigate = useNavigate();
     const [getBlog, setBlog] = useState([]);
     const [filteredBlog, setFilteredBlog] = useState([]); // Filtered list of blog posts
     const [getPostTitle, setPostTitle] = useState('');
+
+    const ForumCard = lazy(() => import('../components/ForumCard'));
 
     useEffect(() => {
         (async () => {
@@ -81,17 +83,19 @@ const Forum = () => {
                     action={() => navigate(`/posts/new`)}
                 />
                 <br></br>
-                {filteredBlog.map((post) => (
-                    <ForumCard
-                        key={post._id} // Add a key prop for each rendered element
-                        id={post._id} // Pass the post ID as a prop
-                        title={post.title}
-                        description={post.content}
-                        deletePost={handleDeletePost}
-                        editPost={() => navigate(`/posts/${post._id}`)}
-                        seeMore={() => navigate(`/posts/view/${post._id}`)}
-                    />
-                ))}
+                <Suspense fallback={<Loading />}>
+                    {filteredBlog.map((post) => (
+                        <ForumCard
+                            key={post._id} // Add a key prop for each rendered element
+                            id={post._id} // Pass the post ID as a prop
+                            title={post.title}
+                            description={post.content}
+                            deletePost={handleDeletePost}
+                            editPost={() => navigate(`/posts/${post._id}`)}
+                            seeMore={() => navigate(`/posts/view/${post._id}`)}
+                        />
+                    ))}
+                </Suspense>
             </div>
         </div>
     );

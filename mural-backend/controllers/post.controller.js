@@ -1,4 +1,6 @@
 const Post = require('../models/post.model');
+const catchAsync = require('../utils/catchAsync');
+const factory = require('./handlerFactory');
 
 exports.getAllPosts = async (req, res) => {
     const posts = await Post.find();
@@ -17,23 +19,7 @@ exports.getAllPosts = async (req, res) => {
     }
 };
 
-exports.getPost = async (req, res) => {
-    try {
-        const post = await Post.findById(req.params.id);
-        // Tour.findOne({ _id: req.params.id })
-        res.status(200).json({
-            status: 'success',
-            data: {
-                post,
-            },
-        });
-    } catch (err) {
-        res.status(404).json({
-            status: 'fail',
-            message: err,
-        });
-    }
-};
+exports.getPost = factory.getOne(Post, { path: 'comments' });
 
 exports.createPost = async (req, res) => {
     try {
