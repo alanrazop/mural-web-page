@@ -28,6 +28,7 @@
     },
     "scripts": {
         "update-env": "node ./utils/updateEnv.js",
+        "run-page": "node ./render/redirect.js",
         "start": "react-scripts start",
         "start:dev": "npm run update-env development && react-scripts start",
         "start:prod": "npm run update-env production && react-scripts start",
