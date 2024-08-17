@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/forumCard.css';
 import Button from './Button';
-import logo from '../assets/logo_gw_forum.png';
+import logo from '../assets/mujer_foro.PNG';
 import { Edit, Trash2 } from 'react-feather';
 import { isAuthenticated } from '../utils/auth';
 

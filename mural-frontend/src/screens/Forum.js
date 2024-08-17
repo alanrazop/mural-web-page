@@ -1,21 +1,19 @@
-import React, { useEffect, useState, lazy, Suspense } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../styles/forumForm.css';
-//import ForumCard from '../components/ForumCard';
+import ForumCard from '../components/ForumCard';
 import { getPosts } from '../client/forum';
 import Input from '../components/Input';
 import { deletePost } from '../client/forum';
 import { FireError, FireSucess, FireQuestion } from '../utils/alertHandler';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Button from '../components/Button';
-import Loading from './Loading';
 
 const Forum = () => {
+    const searchParams = useParams();
     const navigate = useNavigate();
     const [getBlog, setBlog] = useState([]);
     const [filteredBlog, setFilteredBlog] = useState([]); // Filtered list of blog posts
     const [getPostTitle, setPostTitle] = useState('');
-
-    const ForumCard = lazy(() => import('../components/ForumCard'));
 
     useEffect(() => {
         (async () => {
@@ -64,39 +62,45 @@ const Forum = () => {
 
     return (
         <div>
-            <div className='containerTitle'>
-                <b>Foro</b>
-            </div>
+            <body>
+                <div className='containerTitle'>
+                    <b>Foro</b>
+                </div>
 
-            <div className='container-form'>
-                <label>
-                    <Input
-                        label={'Buscar publicación'}
-                        getVal={getPostTitle}
-                        setVal={setPostTitle}
-                    />
-                </label>
-                <br></br>
-                <Button
-                    text={'Nueva publicación'}
-                    type='create'
-                    action={() => navigate(`/posts/new`)}
-                />
-                <br></br>
-                <Suspense fallback={<Loading />}>
-                    {filteredBlog.map((post) => (
-                        <ForumCard
-                            key={post._id} // Add a key prop for each rendered element
-                            id={post._id} // Pass the post ID as a prop
-                            title={post.title}
-                            description={post.content}
-                            deletePost={handleDeletePost}
-                            editPost={() => navigate(`/posts/${post._id}`)}
-                            seeMore={() => navigate(`/posts/view/${post._id}`)}
+                <div className='container-form'>
+                    <label>
+                        <Input
+                            label={'Buscar publicación'}
+                            getVal={getPostTitle}
+                            setVal={setPostTitle}
                         />
-                    ))}
-                </Suspense>
-            </div>
+                    </label>
+                    <br></br>
+                    <Button
+                        text={'Nueva publicación'}
+                        type='create'
+                        action={() => navigate(`/posts/new`)}
+                    />
+                    <br></br>
+                    {filteredBlog.length > 0 ? (
+                        filteredBlog.map((post) => (
+                            <ForumCard
+                                key={post._id} // Add a key prop for each rendered element
+                                id={post._id} // Pass the post ID as a prop
+                                title={post.title}
+                                description={post.content}
+                                deletePost={handleDeletePost}
+                                editPost={() => navigate(`/posts/${post._id}`)}
+                                seeMore={() =>
+                                    navigate(`/posts/view/${post._id}`)
+                                }
+                            />
+                        ))
+                    ) : (
+                        <p>No hay publicaciones en el foro.</p>
+                    )}
+                </div>
+            </body>
         </div>
     );
 };

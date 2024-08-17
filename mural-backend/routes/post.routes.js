@@ -19,10 +19,6 @@ router
     .route('/:id')
     .get(postController.getPost)
     .patch(postController.updatePost)
-    .delete(
-        protect,
-        restrictTo('user', 'lead-guide'),
-        postController.deletePost
-    );
+    .delete(protect, restrictTo('admin'), postController.deletePost);
 
 module.exports = router;

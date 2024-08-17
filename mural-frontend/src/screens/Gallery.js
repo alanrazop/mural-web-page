@@ -1,4 +1,4 @@
-import React, { useEffect, useState, lazy, Suspense } from 'react';
+import React, { useEffect, useState, lazy } from 'react';
 import '../styles/galley.css';
 import InputImage from '../components/InputImage';
 import Button from '../components/Button';
@@ -12,13 +12,10 @@ import {
 import { createImage } from '../client/image';
 import Input from '../components/Input';
 import { isAuthenticated } from '../utils/auth';
-import Loading from './Loading';
 
 const Gallery = () => {
     const [image, setImage] = useState(null);
     const [title, setTitle] = useState('');
-
-    const Carousel = lazy(() => import('../components/Carousel'));
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -86,9 +83,8 @@ const Gallery = () => {
                 )}
             </div>
             <br></br>
-            <Suspense fallback={<Loading />}>
-                <Carousel />
-            </Suspense>
+
+            <Carousel />
         </div>
     );
 };

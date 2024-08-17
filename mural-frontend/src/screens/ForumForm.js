@@ -47,7 +47,7 @@ const ForumForm = () => {
     };
 
     return (
-        <div>
+        <div className='container-form'>
             <h2>Nueva publicación</h2>
             <form className='forum-form'>
                 <Input

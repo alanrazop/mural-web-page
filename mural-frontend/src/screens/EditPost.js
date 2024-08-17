@@ -62,7 +62,7 @@ const EditForm = () => {
     return (
         <div>
             <h2>Editar publicación</h2>
-            <form className='forum-form'>
+            <form className='container-form'>
                 <Input
                     label='Título'
                     getVal={data.title}
@@ -75,14 +75,14 @@ const EditForm = () => {
                     setVal={(value) => onInputChange('content', value)}
                 />
                 <br />
-                <InputImage label={'Sube una imagen (Opcional)'} />
-                <br />
+
                 <Button
                     type='create'
                     action={onSubmit}
                     text={'Guardar cambios'}
                 />
-                <br />
+                <br></br>
+                <br></br>
             </form>
         </div>
     );

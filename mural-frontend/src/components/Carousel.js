@@ -75,21 +75,25 @@ const Responsive = () => {
     };
     return (
         <div className='slider-container'>
-            <Slider {...settings}>
-                {getImage.map((el, i) => (
-                    <div key={i}>
-                        <img src={el.imageUrl} alt={el.title} />
-                        <h5>{el.title}</h5>
-                        {isAuthenticated() && (
-                            <Button
-                                type='delete'
-                                action={(e) => handleDelete(el._id)}
-                                icon={<Trash2 size={15} />}
-                            />
-                        )}
-                    </div>
-                ))}
-            </Slider>
+            {getImage.length > 0 ? (
+                <Slider {...settings}>
+                    {getImage.map((el, i) => (
+                        <div key={i}>
+                            <img src={el.imageUrl} alt={el.title} />
+                            <h5>{el.title}</h5>
+                            {isAuthenticated() && (
+                                <Button
+                                    type='delete'
+                                    action={(e) => handleDelete(el._id)}
+                                    icon={<Trash2 size={15} />}
+                                />
+                            )}
+                        </div>
+                    ))}
+                </Slider>
+            ) : (
+                <p>No hay imágenes en la galeria.</p>
+            )}
         </div>
     );
 };

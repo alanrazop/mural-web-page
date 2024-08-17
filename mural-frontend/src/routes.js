@@ -70,13 +70,6 @@ const routes = [
         inNavbar: false,
     },
     {
-        path: '/signup',
-        name: 'Registrarse',
-        Component: SignupForm,
-        isPrivate: false,
-        inNavbar: false,
-    },
-    {
         path: '/cambiarContrasena',
         name: 'Cambiar contraseña',
         Component: ForgotPassword,
