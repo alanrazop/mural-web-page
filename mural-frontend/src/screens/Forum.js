@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Suspense } from 'react';
 import '../styles/forumForm.css';
 import ForumCard from '../components/ForumCard';
 import { getPosts } from '../client/forum';
@@ -7,6 +7,7 @@ import { deletePost } from '../client/forum';
 import { FireError, FireSucess, FireQuestion } from '../utils/alertHandler';
 import { useNavigate, useParams } from 'react-router-dom';
 import Button from '../components/Button';
+import LoadingSpinner from '../components/LoadingSpinner'; // Import the LoadingSpinner
 
 const Forum = () => {
     const searchParams = useParams();
@@ -14,22 +15,27 @@ const Forum = () => {
     const [getBlog, setBlog] = useState([]);
     const [filteredBlog, setFilteredBlog] = useState([]); // Filtered list of blog posts
     const [getPostTitle, setPostTitle] = useState('');
+    const [loading, setLoading] = useState(true); // Loading state
 
     useEffect(() => {
         (async () => {
-            const blog = await getPosts();
-
-            setBlog(blog);
+            try {
+                const blog = await getPosts();
+                setBlog(blog);
+                setFilteredBlog(blog);
+            } catch (error) {
+                FireError('Error al cargar las publicaciones');
+            } finally {
+                setLoading(false); // Set loading to false once the data is fetched
+            }
         })();
     }, []);
 
     // Filter blog posts when search term changes
     useEffect(() => {
         if (getPostTitle.trim() === '') {
-            // If search term is empty, reset to original list
             setFilteredBlog(getBlog);
         } else {
-            // Filter blog posts by title
             const newFilteredBlog = getBlog.filter((post) =>
                 post.title.toLowerCase().includes(getPostTitle.toLowerCase())
             );
@@ -47,10 +53,7 @@ const Forum = () => {
             if (!confirmation.isConfirmed) return;
             await deletePost(id);
 
-            // Remove the deleted post from getBlog state
             setBlog(getBlog.filter((blog) => blog._id !== id));
-
-            // Remove the deleted post from filteredBlog state
             setFilteredBlog(filteredBlog.filter((blog) => blog._id !== id));
 
             FireSucess('Publicación eliminada exitosamente');
@@ -61,7 +64,7 @@ const Forum = () => {
     };
 
     return (
-        <div>
+        <div className='overlay'>
             <body>
                 <div className='containerTitle'>
                     <b>Foro</b>
@@ -75,18 +78,20 @@ const Forum = () => {
                             setVal={setPostTitle}
                         />
                     </label>
-                    <br></br>
+                    <br />
                     <Button
                         text={'Nueva publicación'}
                         type='create'
                         action={() => navigate(`/posts/new`)}
                     />
-                    <br></br>
-                    {filteredBlog.length > 0 ? (
+                    <br />
+                    {loading ? (
+                        <LoadingSpinner /> // Show loading spinner while loading
+                    ) : filteredBlog.length > 0 ? (
                         filteredBlog.map((post) => (
                             <ForumCard
-                                key={post._id} // Add a key prop for each rendered element
-                                id={post._id} // Pass the post ID as a prop
+                                key={post._id}
+                                id={post._id}
                                 title={post.title}
                                 description={post.content}
                                 deletePost={handleDeletePost}

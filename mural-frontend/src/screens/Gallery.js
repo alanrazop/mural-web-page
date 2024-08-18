@@ -12,10 +12,12 @@ import {
 import { createImage } from '../client/image';
 import Input from '../components/Input';
 import { isAuthenticated } from '../utils/auth';
+import LoadingSpinner from '../components/LoadingSpinner'; // Import the LoadingSpinner
 
 const Gallery = () => {
     const [image, setImage] = useState(null);
     const [title, setTitle] = useState('');
+    const [loading, setLoading] = useState(true); // Loading state
 
     const onSubmit = async (e) => {
         e.preventDefault();

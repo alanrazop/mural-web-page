@@ -9,9 +9,12 @@ import { useNavigate } from 'react-router-dom';
 import { deleteImage } from '../client/image';
 import { Trash, Trash2 } from 'react-feather';
 import { isAuthenticated } from '../utils/auth';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 const Responsive = () => {
     const [getImage, setImage] = useState([]);
+    const [loading, setLoading] = useState(true); // Loading state
+
     const navigate = useNavigate();
 
     const handleDelete = async (id) => {
@@ -33,9 +36,15 @@ const Responsive = () => {
 
     useEffect(() => {
         (async () => {
-            const image = await getAllImages();
+            try {
+                const image = await getAllImages();
 
-            setImage(image);
+                setImage(image);
+            } catch (error) {
+                FireError('Error al cargar las imágenes.');
+            } finally {
+                setLoading(false); // Set loading to false once the data is fetched
+            }
         })();
     }, []);
 
@@ -75,7 +84,9 @@ const Responsive = () => {
     };
     return (
         <div className='slider-container'>
-            {getImage.length > 0 ? (
+            {loading ? (
+                <LoadingSpinner /> // Show loading spinner while loading
+            ) : getImage.length > 0 ? (
                 <Slider {...settings}>
                     {getImage.map((el, i) => (
                         <div key={i}>

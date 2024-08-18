@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import LoadingSpinner from './components/LoadingSpinner';
 import PrivateRoute from './components/PrivateRoute';
 import routes from './routes';
 import './styles/style.css';
@@ -20,7 +21,9 @@ function App() {
                                 element={
                                     <PrivateRoute>
                                         <Navbar />
-                                        <route.Component />
+                                        <Suspense fallback={<LoadingSpinner />}>
+                                            <route.Component />
+                                        </Suspense>
                                         <Footer />
                                     </PrivateRoute>
                                 }
@@ -32,7 +35,9 @@ function App() {
                                 element={
                                     <div>
                                         <Navbar />
-                                        <route.Component />
+                                        <Suspense fallback={<LoadingSpinner />}>
+                                            <route.Component />
+                                        </Suspense>
                                         <Footer />
                                     </div>
                                 }
