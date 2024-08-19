@@ -7,16 +7,20 @@ import axios from 'axios';
 import '../styles/auth.css';
 import Input from '../components/Input';
 import Button from '../components/Button';
+import LoadingSpinner from '../components/LoadingSpinner'; // Import the LoadingSpinner
 
 const LoginForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
+    const [loading, setLoading] = useState(false); // Loading state
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setLoading(true);
         try {
             const response = await postLogin(email, password);
+
             if (response.status === 'success') {
                 axios.defaults.headers.common[
                     'Authorization'
@@ -30,6 +34,8 @@ const LoginForm = () => {
             if (error.response.status === 401)
                 FireError(error.response.data.message);
             else FireError('Ocurrió un error. Por favor intenta de nuevo.');
+        } finally {
+            setLoading(false); // Set loading to false once the data is fetched
         }
     };
 
@@ -61,11 +67,14 @@ const LoginForm = () => {
                     />
                 </div>
                 <br></br>
+
                 <Button
                     type='action'
                     text='Iniciar sesión'
                     action={handleSubmit}
                 />
+                <br></br>
+                {loading ? <LoadingSpinner /> : null}
             </form>
             {/* <section>
                 <Link to='/signup'>Registrarse</Link>

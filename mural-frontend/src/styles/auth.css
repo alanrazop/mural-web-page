@@ -30,10 +30,6 @@ h1 {
     margin: 0;
 }
 
-.auth-container form {
-    color: #999;
-}
-
 .auth-container form button[type='submit'] {
     width: 100%;
     padding: 1rem;

@@ -3,8 +3,7 @@ import '../styles/footer.css'; // Import the CSS file for styling
 import logo from '../assets/logo_gw.png';
 import ig from '../assets/instagram.png';
 import fb from '../assets/facebook.png';
-import tw from '../assets/twitter.png';
-import { Link } from 'react-router-dom';
+import tw from '../assets/x.png';
 
 function Footer() {
     return (

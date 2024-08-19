@@ -1,23 +1,16 @@
-import React, { useEffect, useState, lazy } from 'react';
+import React, { useState } from 'react';
 import '../styles/galley.css';
 import InputImage from '../components/InputImage';
 import Button from '../components/Button';
 import Carousel from '../components/Carousel';
-import {
-    FireError,
-    FireSucess,
-    FireQuestion,
-    FireLoading,
-} from '../utils/alertHandler';
+import { FireError, FireSucess, FireLoading } from '../utils/alertHandler';
 import { createImage } from '../client/image';
 import Input from '../components/Input';
 import { isAuthenticated } from '../utils/auth';
-import LoadingSpinner from '../components/LoadingSpinner'; // Import the LoadingSpinner
 
 const Gallery = () => {
     const [image, setImage] = useState(null);
     const [title, setTitle] = useState('');
-    const [loading, setLoading] = useState(true); // Loading state
 
     const onSubmit = async (e) => {
         e.preventDefault();
