@@ -9,7 +9,8 @@ img {
     padding: 15px 45px;
     /* Más espacio para un diseño limpio */
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    /* Espacio entre el menú y el botón de logout */
     align-items: center;
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
     /* Sombra suave para darle profundidad */
@@ -27,6 +28,8 @@ img {
     padding: 10px 15px;
     position: relative;
     transition: color 0.3s ease;
+    display: block;
+    /* Asegura que cada botón esté en su propia línea en móviles */
 }
 
 .navbar-button.active {
@@ -78,18 +81,72 @@ img {
     /* Asegura que no haya subrayado al hacer hover */
 }
 
-/* Responsividad mejorada */
+/* Estilo del botón de hamburguesa */
+.hamburger {
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: #333;
+    cursor: pointer;
+    display: none;
+    /* Oculto por defecto */
+}
+
+.navbar-menu {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+.navbar-menu.is-active {
+    display: block;
+    /* Muestra el menú cuando está activo en pantallas pequeñas */
+}
+
 @media (max-width: 768px) {
     .navbar {
         flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .hamburger {
+        display: block;
+        /* Mostrar el botón de hamburguesa en pantallas pequeñas */
+    }
+
+    .navbar-menu {
+        display: none;
+        /* Ocultar el menú por defecto en pantallas pequeñas */
+        width: 100%;
+        flex-direction: column;
+        padding-left: 10px;
+        /* Agrega espaciado a la izquierda para mejorar la visualización */
+    }
+
+    .navbar-menu.is-active {
+        display: block;
+        /* Mostrar el menú al hacer clic en el botón de hamburguesa */
     }
 
     .navbar-button {
         padding: 10px 0;
         margin: 5px 0;
+        width: 100%;
+        text-align: left;
+    }
+
+    .navbar-button.active {
+        border-bottom: none;
+        /* Quita la línea de fondo para el estado activo en móviles */
+        font-weight: 700;
+        background-color: #f0e6fa;
+        /* Fondo morado claro para resaltar el botón activo */
     }
 
     .navbar-logout {
         margin-top: 10px;
+        width: 100%;
+        text-align: left;
     }
 }
