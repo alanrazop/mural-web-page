@@ -1,5 +1,5 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { FireQuestion } from '../utils/alertHandler';
 import { LogOut, Key } from 'react-feather';
 import { logOut } from '../utils/auth';
@@ -9,6 +9,12 @@ import { isAuthenticated } from '../utils/auth';
 
 function Navbar() {
     const navigate = useNavigate();
+    const location = useLocation(); // para obtener la ruta actual
+    const [activeRoute, setActiveRoute] = useState(location.pathname);
+
+    useEffect(() => {
+        setActiveRoute(location.pathname);
+    }, [location.pathname]); // Cambia la ruta activa cuando cambia la ubicación
 
     const logOutHandler = async () => {
         const confirmation = await FireQuestion(
@@ -18,6 +24,7 @@ function Navbar() {
         );
         if (confirmation.isDismissed) return;
         logOut();
+        navigate('/login');
     };
 
     return (
@@ -28,9 +35,11 @@ function Navbar() {
                     .map((route) => (
                         <a
                             key={route.path}
-                            className='navbar-button'
-                            id='inicio_btn'
-                            onClick={() => navigate(route.path)}
+                            className={`navbar-button ${activeRoute === route.path ? 'active' : ''}`}
+                            onClick={() => {
+                                setActiveRoute(route.path);
+                                navigate(route.path);
+                            }}
                         >
                             {route.name}
                         </a>
