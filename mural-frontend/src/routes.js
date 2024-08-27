@@ -43,7 +43,7 @@ const routes = [
     },
     {
         path: '/forum',
-        name: 'Foro',
+        name: 'Elementos',
         Component: Forum,
         isPrivate: false,
         inNavbar: true,
