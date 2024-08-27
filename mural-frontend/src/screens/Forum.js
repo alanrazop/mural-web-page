@@ -67,43 +67,11 @@ const Forum = () => {
         <div className='overlay'>
             <body>
                 <div className='containerTitle'>
-                    <b>Foro</b>
+                    <b>Elementos del mural</b>
                 </div>
 
                 <div className='container-form'>
-                    <label>
-                        <Input
-                            label={'Buscar publicación'}
-                            getVal={getPostTitle}
-                            setVal={setPostTitle}
-                        />
-                    </label>
-                    <br />
-                    <Button
-                        text={'Nueva publicación'}
-                        type='create'
-                        action={() => navigate(`/posts/new`)}
-                    />
-                    <br />
-                    {loading ? (
-                        <LoadingSpinner /> // Show loading spinner while loading
-                    ) : filteredBlog.length > 0 ? (
-                        filteredBlog.map((post) => (
-                            <ForumCard
-                                key={post._id}
-                                id={post._id}
-                                title={post.title}
-                                description={post.content}
-                                deletePost={handleDeletePost}
-                                editPost={() => navigate(`/posts/${post._id}`)}
-                                seeMore={() =>
-                                    navigate(`/posts/view/${post._id}`)
-                                }
-                            />
-                        ))
-                    ) : (
-                        <p>No hay publicaciones en el foro.</p>
-                    )}
+                    <image src='./elementos.png'></image>
                 </div>
             </body>
         </div>
